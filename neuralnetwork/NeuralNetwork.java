@@ -118,8 +118,12 @@ public class NeuralNetwork {
     public static void main(String[] args) 
     {
 
-        // create network
-        Network network = makeNetwork(1, 1, 20);
+        /* create network
+        parameters of makeNetwork() in the order they appear: 
+        - number of input nodes
+        - number of hidden layers 
+        - number of internal nodes per hidden layer */
+        Network network = makeNetwork(1, 3, 20);
         
         network.trainNetwork(sineTest(100), 0.25, 100, false);
         network.testNetwork(sineTest(5));
