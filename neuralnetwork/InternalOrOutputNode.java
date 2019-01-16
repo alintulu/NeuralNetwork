@@ -75,11 +75,12 @@ public class InternalOrOutputNode implements Node {
 
         // create new list of input values
         this.input = new ArrayList<>();
+        
         /* weightedSum is the sum of all the weghts of the incoming edges times
         the outputof the source node of that edge */
         double weightedSum = 0.0;
 
-        // for each input edge calculate the sum of the product between the input to the node times the weight of the input edge
+        // for each incoming edge calculate the sum of the product between the input to the node times the weight of the incoming edge
         for (Edge edge : this.inEdges) {
 
             double theInput = edge.getSource().getOutput(inputVal);
@@ -128,7 +129,6 @@ public class InternalOrOutputNode implements Node {
             if (this.outEdges.size() == 0) 
             {
                 this.error = trueVal - this.output;
- 
             } 
             else 
             {
@@ -139,10 +139,10 @@ public class InternalOrOutputNode implements Node {
                     if (this.error == null) 
                     {
                         this.error = 0.0;
-                        this.error += edge.getWeight() + edge.getTarget().getError(trueVal, printError);
+                        this.error += edge.getWeight() * edge.getTarget().getError(trueVal, printError);
 
                     } else {
-                        this.error += edge.getWeight() + edge.getTarget().getError(trueVal, printError);
+                        this.error += edge.getWeight() * edge.getTarget().getError(trueVal, printError);
 
                     }
                 }
