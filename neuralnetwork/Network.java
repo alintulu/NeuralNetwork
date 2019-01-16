@@ -109,6 +109,8 @@ public class Network {
             double trueVal = data.getTrueVal();
             double output = getOutput(inputData);
 
+            System.out.println("Input: " + inputData[0] + "\nCorrect output: " + trueVal + "\nNetworks output: " + output + "\n");
+            
         }
     }
 }
