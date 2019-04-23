@@ -168,7 +168,6 @@ public class InternalOrOutputNode implements Node {
                 temp += weightFunc(learningRate, this.output, this.error, this.input.get(i));
 
                 this.inEdges.get(i).setWeight(temp);
-
             }
 
             // loop over outgoing edges and start update

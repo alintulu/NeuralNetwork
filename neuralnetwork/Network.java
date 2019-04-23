@@ -5,6 +5,9 @@
  */
 package neuralnetwork;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +22,7 @@ import java.util.List;
  */
 public class Network {
 
-    private boolean debug = true;
+    private boolean debug = false;
 
     // list of input nodes, can be have many you want. 1,2,3...
     public List<Node> inputNodes;
@@ -76,41 +79,90 @@ public class Network {
     }
 
     // main function to train the network, trainData is list containing the training data
-    public void trainNetwork(List<trainingData> trainData, double learningRate, int numIterations, boolean printError) 
-    {
-        for (int i = 0; i < numIterations; i++) 
-        {
-            /* inputData is the input the network will learn from
-            trueVal is the correct output value of the inputData, 
-            the network will use this to caluclate error and with that update weights*/
-            for (trainingData data : trainData) 
-            {
+    public List<Double> trainNetwork(List<trainingData> trainData, int N, double learningRate, int numIterations, boolean printError) {
+
+        
+        List<Double> trainingLoss = new ArrayList<>();
+        int epoch = (int) numIterations/10;
+        
+        FileWriter fw;
+
+        try {
+            fw = new FileWriter(new File("training01.txt"));
+
+            for (int i = 0; i < numIterations; i++) {
+                
+                double epochLoss = 0;
+
+                // inputData is the input the network will learn from
+                // trueVal is the correct answer of the inputData, the network will use this to caluclate error and with that update weights
+                for (trainingData data : trainData) {
+
+                    double[] inputData = data.getInputVal();
+                    double trueVal = data.getTrueVal();
+
+                    if (debug) {
+                        data.String();
+                    }
+
+                    double output = getOutput(inputData);
+
+                    if (i % epoch == 0) {
+                        epochLoss += Math.pow(trueVal - output, 2);
+                    }
+                    
+                    fw.write(String.format("%4.3f %4.3f\n", inputData[0], output));
+
+                    backPropagate(trueVal, printError);
+                    updateWeights(learningRate);
+                }
+                
+                if (i % epoch == 0) {
+                    trainingLoss.add(epochLoss / N);
+                }
+
+            }
+            fw.close();
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return trainingLoss;
+    }
+
+    // main function to test the network
+    public double testNetwork(List<trainingData> trainData, int N) {
+
+        boolean debug = false;
+        double loss = 0;
+
+        FileWriter fw;
+
+        try {
+            fw = new FileWriter(new File("testing01.txt"));
+
+            // inputData is the input the network will learn from
+            // trueVal is the correct answer of the inputData, the network will use this to caluclate error and with that update weights
+            for (trainingData data : trainData) {
 
                 double[] inputData = data.getInputVal();
                 double trueVal = data.getTrueVal();
 
-                getOutput(inputData);
-                backPropagate(trueVal, printError);
-                updateWeights(learningRate);
+                double output = getOutput(inputData);
+                
+                loss += Math.pow(trueVal - output, 2);
+                
+                fw.write(String.format("%4.3f %4.3f\n", inputData[0], output));
+
+                if (debug) {
+                    System.out.println("inputData: " + inputData[0] + ", trueVal: " + trueVal + ", output: " + output + "\n");
+                }
             }
+            fw.close();
 
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
-    }
-
-    // main function to test the network
-    public void testNetwork(List<trainingData> trainData) 
-    {
-         /* inputData is the input the network will learn from
-            trueVal is the correct output value of the inputData, 
-            the network will use this to caluclate error and with that update weights*/
-        for (trainingData data : trainData) {
-
-            double[] inputData = data.getInputVal();
-            double trueVal = data.getTrueVal();
-            double output = getOutput(inputData);
-
-            System.out.println("Input: " + inputData[0] + "\nCorrect output: " + trueVal + "\nNetworks output: " + output + "\n");
-            
-        }
+        return loss / N;
     }
 }
