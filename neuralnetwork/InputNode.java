@@ -40,6 +40,11 @@ public class InputNode implements Node {
     {
         return name;
     }
+    
+     public Integer getIndex() 
+    {
+        return index;
+    }
 
     // return value of the input corresponding to the index
     public double getOutput(double[] inputVal) 
