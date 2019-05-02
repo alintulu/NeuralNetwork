@@ -35,3 +35,6 @@ Each loss is calculated with 100 iterations between values (i.e. first after 100
 ```
 0.07112476578231174
 ```
+# Fixes
+
+Why add edge to bias adds 3 edges?
