@@ -1,11 +1,34 @@
 # Neural Network
 
-Main function to build the neural network and train as well as test it is done in the file [NeuralNetwork.java](neuralnetwork/NeuralNetwork.java).
-If you wish to change the number of internal nodes or number of hidden layers, do it [here](https://github.com/alintulu/NeuralNetwork/blob/master/neuralnetwork/NeuralNetwork.java#L104).
+Main function to build the neural network and train as well as validate it is done in the file [Neuralnetwork/Main.java](Neuralnetwork/Main.java).
+If you wish to change the number of internal nodes or number of hidden layers, do it [here](https://github.com/alintulu/NeuralNetwork/blob/master/src/Neuralnetwork/Main.java#L109). For more information of how to use the code check out
+[Instructions](https://github.com/alintulu/NeuralNetwork/blob/master/documentation/Instructions.md).
 
-## Current performance (23.04.2019)
+## Structure of the code
 
-### Settings
+The folder [Nodes](Nodes) contains the source code of the different nodes employed by the network. There is 
+
+  * [InputNode.java](Nodes/InputNode.java)
+  * [InternalOrOutputNode.java](Nodes/InternalOrOutputNode.java)
+  * [BiasNode.java](Nodes/BiasNode.java) 
+  
+that follows the interface [Node.java](Nodes/Node.java). In the same folder you'll find [Edge.java](Nodes/Edge.java) that creates edges between the above mentioned nodes.
+
+The folder [Neuralnetwork](Neuralnetwork) contains the code for creating the network and generating the training data as well as training and validating the netwrok. The folder [Help](Help) contains the help functions used by the network, such as [WriteData.java](Help/WriteData.java) that writes out the generated and predicted data into a .txt file to be used for plotting.
+
+## Performance
+
+With the settings of 1 input node, 3 hidden layers and 10 nodes in each layer and the network being trained on 100 data points with learning rate 0.01 and epochs 1000, the final loss and error is 
+
+  * loss : 0.0967266283863907
+  * error : 0.0018227473748430889
+
+Validated on 50 data points the loss and error is
+
+  * loss : 0.07236535558734761
+  * error : 0.0926871532752804
+
+## Settings
 
 ```
 makeNetwork(1, 3, 10)
@@ -13,28 +36,29 @@ network.trainNetwork(sineTest(100), 100, 0.01, 1000, false)
 network.testNetwork(sineTest(50), 50)
 ```
 
-### Training loss
+### Training loss and error
 
 Each loss is calculated with 100 iterations between values (i.e. first after 100 iterations, second after 200 iterations etc)
 
 ```
-0.3921109844995156
-0.11446661139538987
-0.11416035185276044
-0.113978954400356
-0.11339826346614376
-0.10986621496152318
-0.09110020821530945
-0.08076424698431092
-0.07957524807844027
-0.07935500987926618
+Loss :
+Epoch 1: 0.3921109844995156
+      2 : 0.2899933924911887
+      3: 0.104467802199427214
+      4 : 0.09998987395211105
+      5: 0.09864322148964241
+      6 : 0.09821383290194213
+      7 : 0.09801403624897569
+      8 : 0.0978916881507303
+      9 : 0.09779691174910184
+      10 :  0.0967266283863907
+      
+Error : 0.0018227473748430889
 ```
 
-### Validation loss
+### Validation loss and error
 
 ```
-0.07112476578231174
+Loss : 0.07236535558734761
+Error : 0.2268715327528046
 ```
-# Fixes
-
-Why add edge to bias adds 3 edges?
