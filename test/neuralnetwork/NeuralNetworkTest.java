@@ -24,22 +24,6 @@ public class NeuralNetworkTest {
     public NeuralNetworkTest() {
         nn = new NeuralNetwork();
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
     /**
      * Test of makeNetwork method, of class NeuralNetwork.
@@ -53,7 +37,7 @@ public class NeuralNetworkTest {
         Network result = NeuralNetwork.makeNetwork(numInputs, numHiddenLayers, numInEachLayer);
         
         assertTrue(result.inputNodes.size() == numInputs);
-        //assertTrue(result.outputNode.equals(null));
+        assertEquals("outputNode", result.outputNode.getName());
     }
 
     /**

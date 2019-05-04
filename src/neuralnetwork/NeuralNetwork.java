@@ -109,9 +109,9 @@ public class NeuralNetwork {
             System.out.println(tL);
         }
         
-        double testLoss = network.testNetwork(sineTest(50), 50); // trainingdata dataSetSize
+        double[] testLoss = network.testNetwork(sineTest(50), 50); // trainingdata dataSetSize
         
-        System.out.println("Test loss : " + testLoss);
+        System.out.println("Test loss : " + testLoss[0] + "\nTest error : " + testLoss[1]);
 
     }
 

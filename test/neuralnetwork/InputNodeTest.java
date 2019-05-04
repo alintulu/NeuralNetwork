@@ -23,23 +23,6 @@ public class InputNodeTest {
     public InputNodeTest() {
         input = new InputNode(0, "test");
     }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
     /**
      * Test of getName method, of class InputNode.
      */
@@ -87,17 +70,6 @@ public class InputNodeTest {
     public void testGetError() {
         System.out.println("Testin getError..");
         assertEquals(0.0, input.getError(0, false), 0.0);
-    }
-
-    /**
-     * Test of updateWeights method, of class InputNode.
-     */
-    @Test
-    public void testUpdateWeights() {
-        System.out.println("updateWeights");
-        double learningRate = 0.0;
-        InputNode instance = null;
-        //instance.updateWeights(learningRate);
     }
 
 }

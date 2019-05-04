@@ -28,22 +28,6 @@ public class EdgeTest {
         edge = new Edge(input, output);
     }
 
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
     /**
      * Test of setWeight method, of class Edge.
      */
@@ -60,7 +44,7 @@ public class EdgeTest {
      */
     @Test
     public void testSetSource() {
-        System.out.println("setSource");
+        System.out.println("Testing setSource..");
         Node source = new InputNode(1, "test");
         edge.setSource(source);
         assertEquals("test", edge.source.getName());

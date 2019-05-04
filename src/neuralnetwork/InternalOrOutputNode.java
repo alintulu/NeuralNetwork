@@ -77,7 +77,7 @@ public class InternalOrOutputNode implements Node {
         this.input = new ArrayList<>();
         
         /* weightedSum is the sum of all the weghts of the incoming edges times
-        the outputof the source node of that edge */
+        the output of the source node of that edge */
         double weightedSum = 0.0;
 
         // for each incoming edge calculate the sum of the product between the input to the node times the weight of the incoming edge

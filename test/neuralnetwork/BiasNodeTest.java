@@ -24,28 +24,12 @@ public class BiasNodeTest {
         bias = new BiasNode("test");
     }
 
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
     /**
      * Test of getName method, of class BiasNode.
      */
     @Test
     public void testGetName() {
-        System.out.println("Testing getName");
+        System.out.println("Testing getName..");
         assertEquals("test", bias.getName());
     }
 
@@ -54,7 +38,7 @@ public class BiasNodeTest {
      */
     @Test
     public void testGetOutput() {
-        System.out.println("Testin getOutput..");
+        System.out.println("Testing getOutput..");
         double[] inputVal = null;
         assertEquals(1.0, bias.getOutput(inputVal), 0.0);
     }
@@ -64,7 +48,7 @@ public class BiasNodeTest {
      */
     @Test
     public void testAddEdge() {
-        System.out.println("Testin addEdge..");
+        System.out.println("Testing addEdge..");
         assertEquals(0, bias.outEdges.size());
         bias.addEdge(new Edge(bias, bias), true);
         assertEquals(3, bias.outEdges.size());
@@ -75,7 +59,7 @@ public class BiasNodeTest {
      */
     @Test
     public void testGetError() {
-        System.out.println("getError");
+        System.out.println("Testing getError..");
         assertEquals(0.0, bias.getError(0, true), 0);
     }
 

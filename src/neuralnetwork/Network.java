@@ -84,6 +84,7 @@ public class Network {
         
         List<Double> trainingLoss = new ArrayList<>();
         int epoch = (int) numIterations/10;
+        double errorSum = 0;
         
         FileWriter fw;
 
@@ -111,7 +112,11 @@ public class Network {
                         epochLoss += Math.pow(trueVal - output, 2);
                     }
                     
-                    fw.write(String.format("%4.3f %4.3f\n", inputData[0], output));
+                    if (i == numIterations - 1) {
+                        errorSum = Math.abs(trueVal - output);
+                    }
+                    
+                    fw.write(String.format("%4.3f %4.3f %4.3f\n", inputData[0], output, trueVal));
 
                     backPropagate(trueVal, printError);
                     updateWeights(learningRate);
@@ -127,14 +132,18 @@ public class Network {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+        
+        trainingLoss.add(errorSum / N);
+        
         return trainingLoss;
     }
 
     // main function to test the network
-    public double testNetwork(List<trainingData> trainData, int N) {
+    public double[] testNetwork(List<trainingData> trainData, int N) {
 
         boolean debug = false;
         double loss = 0;
+        double errorSum = 0;
 
         FileWriter fw;
 
@@ -151,8 +160,9 @@ public class Network {
                 double output = getOutput(inputData);
                 
                 loss += Math.pow(trueVal - output, 2);
+                errorSum += Math.abs(trueVal - output);
                 
-                fw.write(String.format("%4.3f %4.3f\n", inputData[0], output));
+                fw.write(String.format("%4.3f %4.3f %4.3f\n", inputData[0], output, trueVal));
 
                 if (debug) {
                     System.out.println("inputData: " + inputData[0] + ", trueVal: " + trueVal + ", output: " + output + "\n");
@@ -163,6 +173,6 @@ public class Network {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        return loss / N;
+        return new double[]{loss / N, errorSum / N};
     }
 }

@@ -17,27 +17,11 @@ import static org.junit.Assert.*;
  * @author alintulu
  */
 public class InternalOrOutputNodeTest {
-    
+
     InternalOrOutputNode node;
-    
+
     public InternalOrOutputNodeTest() {
         node = new InternalOrOutputNode("test");
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
     }
 
     /**
@@ -68,14 +52,9 @@ public class InternalOrOutputNodeTest {
      */
     @Test
     public void testGetOutput() {
-        System.out.println("getOutput");
-        double[] inputVal = null;
-        InternalOrOutputNode instance = null;
-        double expResult = 0.0;
-        double result = instance.getOutput(inputVal);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("Testing getOutput..");
+        node.output = 0.5;
+        assertEquals(0.5, node.getOutput(null), 0.0);
     }
 
     /**
@@ -83,11 +62,10 @@ public class InternalOrOutputNodeTest {
      */
     @Test
     public void testAddBias() {
-        System.out.println("addBias");
-        InternalOrOutputNode instance = null;
-        instance.addBias();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("Testing addBias..");
+        assertEquals(1, node.inEdges.size(), 0.0);
+        node.addBias();
+        assertEquals(2, node.inEdges.size(), 0.0);
     }
 
     /**
@@ -95,13 +73,10 @@ public class InternalOrOutputNodeTest {
      */
     @Test
     public void testAddEdge() {
-        System.out.println("addEdge");
-        Edge edge = null;
-        boolean edgeType = false;
-        InternalOrOutputNode instance = null;
-        instance.addEdge(edge, edgeType);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("Testing addEdge..");
+        assertEquals(0, node.outEdges.size(), 0.0);
+        node.addEdge(new Edge(node, new InternalOrOutputNode("temp")), true);
+        assertEquals(2, node.outEdges.size(), 0.0);
     }
 
     /**
@@ -110,14 +85,8 @@ public class InternalOrOutputNodeTest {
     @Test
     public void testGetError() {
         System.out.println("getError");
-        double trueVal = 0.0;
-        boolean printError = false;
-        InternalOrOutputNode instance = null;
-        double expResult = 0.0;
-        double result = instance.getError(trueVal, printError);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        node.error = 0.5;
+        assertEquals(0.5, node.getError(0.0, true), 0.0);
     }
 
     /**
@@ -125,12 +94,10 @@ public class InternalOrOutputNodeTest {
      */
     @Test
     public void testUpdateWeights() {
-        System.out.println("updateWeights");
-        double learningRate = 0.0;
-        InternalOrOutputNode instance = null;
-        instance.updateWeights(learningRate);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("Testing updateWeights..");
+        assertEquals(node.error, null);
+        assertEquals(node.input, null);
+        assertEquals(node.output, null);
     }
 
     /**
@@ -142,5 +109,5 @@ public class InternalOrOutputNodeTest {
         node.clearOutput();
         assertEquals(null, node.output);
     }
-    
+
 }
