@@ -12,12 +12,12 @@ Loss is the penalty for a bad prediction. In general, the lower the loss the bet
 
 A popular loss function, and the one used in this network is the Mean Square Error, MSE. It is the averaged squared loss per data point over the whole dataset. MSE is calculated by summing up the squared losses for individual data points and dividing it by the number of points.
 
-
+![MSE](https://github.com/alintulu/NeuralNetwork/blob/master/documentation/images/mse.png)
 
 Where 
 
-  * trueVal is the label or true value of the input
-  * output is the predicted value of the input
+  * x is the label or true value of the input
+  * o is the predicted value of the input
   * N is the size of the data set
 
 # Error
@@ -26,9 +26,11 @@ The error is a nice metric when evaluating how closely the predicted points equa
 
 The total error is simply the weighted sum over the errors of all the nodes, where the weights are the weights of the edges. The error of each node is updated at every iteration of the network, and is backpropagated from the output node. The first error is calculated by comparing the true value of the outputto the predicted value and then propagated back to the input nodes, multiplied by every weight edge it passes. 
 
+![Error](https://github.com/alintulu/NeuralNetwork/blob/master/documentation/images/err.png)
 
 Where 
 
-  * trueVal is the label or true value of the input
-  * outEdges is all the outgoing edges of the current node
+  * x is the label or true value of the input
+  * o is the predicted value of the input
+  * N is the size of the data set
 
