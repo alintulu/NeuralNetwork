@@ -1,5 +1,7 @@
-package neuralnetwork;
+package Nodes;
 
+import Nodes.Node;
+import Nodes.BiasNode;
 import java.util.ArrayList;
 import java.util.List;
 

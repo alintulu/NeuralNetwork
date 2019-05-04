@@ -1,5 +1,10 @@
-package neuralnetwork;
+package Neuralnetwork;
 
+import Help.trainingData;
+import Nodes.Edge;
+import Nodes.InternalOrOutputNode;
+import Nodes.Node;
+import Nodes.InputNode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +12,7 @@ import java.util.List;
  *
  * @author alintulu
  */
-public class NeuralNetwork {
+public class Main {
 
     public static Network makeNetwork(int numInputs, int numHiddenLayers, int numInEachLayer) {
 

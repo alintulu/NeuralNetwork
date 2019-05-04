@@ -1,4 +1,4 @@
-package neuralnetwork;
+package Nodes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class BiasNode implements Node {
     // name of bias node, used during debugging
     public String name;
 
-    BiasNode(String name) 
+    public BiasNode(String name) 
     {
         this.outEdges = new ArrayList<>();
         this.name = name;

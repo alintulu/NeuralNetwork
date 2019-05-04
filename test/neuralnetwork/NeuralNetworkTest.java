@@ -5,6 +5,8 @@
  */
 package neuralnetwork;
 
+import Neuralnetwork.Network;
+import Neuralnetwork.Main;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -19,10 +21,10 @@ import static org.junit.Assert.*;
  */
 public class NeuralNetworkTest {
     
-    NeuralNetwork nn;
+    Main nn;
     
     public NeuralNetworkTest() {
-        nn = new NeuralNetwork();
+        nn = new Main();
     }
 
     /**
@@ -34,7 +36,7 @@ public class NeuralNetworkTest {
         int numInputs = 2;
         int numHiddenLayers = 2;
         int numInEachLayer = 2;
-        Network result = NeuralNetwork.makeNetwork(numInputs, numHiddenLayers, numInEachLayer);
+        Network result = Main.makeNetwork(numInputs, numHiddenLayers, numInEachLayer);
         
         assertTrue(result.inputNodes.size() == numInputs);
         assertEquals("outputNode", result.outputNode.getName());
@@ -58,7 +60,7 @@ public class NeuralNetworkTest {
     public void testSineTest() {
         System.out.println("Testing sineTest..");
         int numValues = 10;
-        assertTrue(NeuralNetwork.sineTest(numValues).size() == numValues);
+        assertTrue(Main.sineTest(numValues).size() == numValues);
     }
 
     /**
@@ -68,7 +70,7 @@ public class NeuralNetworkTest {
     public void testMain() {
         System.out.println("Testing main..");
         String[] args = null;
-        NeuralNetwork.main(args);
+        Main.main(args);
     }
     
 }

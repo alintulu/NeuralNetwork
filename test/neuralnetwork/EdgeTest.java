@@ -5,6 +5,10 @@
  */
 package neuralnetwork;
 
+import Nodes.Edge;
+import Nodes.InternalOrOutputNode;
+import Nodes.Node;
+import Nodes.InputNode;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
