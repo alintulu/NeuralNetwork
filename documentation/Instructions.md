@@ -38,7 +38,7 @@ The method takes three inputs.
     - boolean for printing statistics
 ```
 
-By default the training data is an array of size 100 containing x and y values of a sine curve. The learning rate is set to 0.01 and number of iterations to 1000. You can change all the mentioned values [here](https://github.com/alintulu/NeuralNetwork/blob/master/src/neuralnetwork/NeuralNetwork.java#L117).
+By default the training data is an array of size 100 containing x and y values of a dosine curve. The learning rate is set to 0.01 and number of iterations to 1000. You can change all the mentioned values [here](https://github.com/alintulu/NeuralNetwork/blob/master/src/Neuralnetwork/Main.java#L111).
 
 ## Testing the network
 
@@ -53,4 +53,21 @@ The method takes two inputs.
     - batch size of the training data
 ```
 
-By default the training data is an array of size 50 containing x and y values of a sine curve. You can change all the mentioned values [here](https://github.com/alintulu/NeuralNetwork/blob/master/src/Neuralnetwork/Main.java#L109).
+By default the training data is an array of size 50 containing x and y values of a cosine curve. You can change all the mentioned values [here](https://github.com/alintulu/NeuralNetwork/blob/master/src/Neuralnetwork/Main.java#L117).
+
+## Result 
+
+The script will create two .txt files
+
+  1. `training01.txt`
+  2. `testing01.txt`
+  
+ Which each has three rows containing data in the following fashion.
+ 
+```
+  input  output  true_value
+```
+
+Where input is the input given to the network, output is the predicted value of the network and true_value is the label or true value of the input.
+
+The creating of the files happens [here](https://github.com/alintulu/NeuralNetwork/blob/master/src/Neuralnetwork/Network.java#L121) for training and [here](https://github.com/alintulu/NeuralNetwork/blob/master/src/Neuralnetwork/Network.java#L167) for testing/validating. The script will also print the loss and error of training and testing. If you want to read more about the metrics of evaluting the model, read [UnderstandingTheOutput](https://github.com/alintulu/NeuralNetwork/blob/master/documentation/UnderstandingTheOutput.md)  
