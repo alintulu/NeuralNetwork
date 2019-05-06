@@ -1,6 +1,6 @@
 # Understanding the network
 
-A neural network contains layers of interconnected nodes. The first layer is a input layer containing a node for each dimension of the input data. The input layer is connected to the first hidden layer. Each node takes its input and feeds it into an activation function, a function crucial for learning the model. The final layer is an output layer that in this case has one node. The weights of the edges connecting all the nodes are fine-tuned until the neural network's margin of error is minimal.
+A neural network contains layers of interconnected nodes. The first layer is a input layer containing a node for each dimension of the input data. The input layer is connected to the first hidden layer. Each node takes its input and feeds it into an activation function, a function crucial for learning the model. The final layer is an output layer that in this case has one node. The weights of the edges connecting all the nodes are fine-tuned until the neural network's margin of error is minimzed.
 
 ![Neural Network](https://github.com/alintulu/NeuralNetwork/blob/master/documentation/images/network.png)
 
@@ -36,9 +36,10 @@ In the end, the process of a neural network is quite simple.
   1. Start of by initializing the weights of all the edges to a random number between 0 and 1 (including the biases).
   2. Evaluate an input X by feeding it forward through the network and at each internal node record the output value.
   3. When reaching the end, record the final output and compute the error for that value.
-  4. Backpropagate the error to each of the nodes feeding into the output node, and update the weights for the output node using the update rule.
-  5.  Repeat the error propagation followed by a weight update for each of the nodes feeding into the output node in the same way. Compute the updates for the nodes feeding into those nodes until the weights of the entire network are updated.
+  4. Backpropagate the error to each of the nodes by feeding it into the output node, and update the weights for the output node using the update rule.
+  5.  Repeat the error propagation followed by a weight update for each of the nodes connected to the output node in the same way. Compute the updates for the nodes connected to those nodes and so on, until the weights of the entire network are updated.
   6. Repeat it all over again with a new input X.
+  7. Stop when some criteria is achieved or when number of iterations are done.
 
 
 
