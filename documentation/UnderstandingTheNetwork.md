@@ -2,7 +2,7 @@
 
 A neural network contains layers of interconnected nodes. The first layer is a input layer containing a node for each dimension of the input data. The input layer is connected to the first hidden layer. Each node takes its input and feeds it into an activation function, a function crucial for learning the model. The final layer is an output layer that in this case has one node. The weights of the edges connecting all the nodes are fine-tuned until the neural network's margin of error is minimzed.
 
-![Neural Network](https://github.com/alintulu/NeuralNetwork/blob/master/documentation/images/network.png)
+![Neural Network](https://github.com/alintulu/NeuralNetwork/blob/master/documentation/images/network_structure.png)
 
 ## Activation function
 
