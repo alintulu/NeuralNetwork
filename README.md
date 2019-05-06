@@ -4,7 +4,7 @@ This repository contains a neural network built in Java for the course of Ohjelm
 (OTM) at the University of Helsinki. The network works on poly-dimensional input data however it comes with a 
 ready built method to train and validate it on one-dimensional inpu data of a cosine curve.
 
-The network uses the activation function of the sigmoid curve and the optimizer of stochastic gradient descent.
+The network uses the activation function of the sigmoid curve and the optimizer of gradient descent.
 It performs well on one-dimensional input data however the performance declines quickly as the dimensions increase.
 The current performance can be seen [here](https://github.com/alintulu/NeuralNetwork/blob/master/src/README.md).
 
