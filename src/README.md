@@ -27,6 +27,8 @@ Validated on 50 data points the loss and error is
 
   * loss : 0.07236535558734761
   * error : 0.0926871532752804
+  
+I.e. the network performs quite well. The loss is decreasing steadily at each epoch and the validation error lands at 9%.
 
 ## Settings
 
@@ -44,14 +46,14 @@ Each loss is calculated with 100 iterations between values (i.e. first after 100
 Loss :
 Epoch 1: 0.3921109844995156
       2 : 0.2899933924911887
-      3: 0.104467802199427214
+      3 : 0.104467802199427214
       4 : 0.09998987395211105
-      5: 0.09864322148964241
+      5 : 0.09864322148964241
       6 : 0.09821383290194213
       7 : 0.09801403624897569
       8 : 0.0978916881507303
       9 : 0.09779691174910184
-      10 :  0.0967266283863907
+      10 : 0.0967266283863907
       
 Error : 0.0018227473748430889
 ```
