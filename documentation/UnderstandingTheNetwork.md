@@ -25,6 +25,8 @@ In this network the bias is incorporated as an additonal node with an output fix
 
 The goal of a neural network is to minimze the error (difference of predicted and actual true value of the output) of each node. The common way to compute the error is by the sum of the squared deviations from the true value of the output. Since we strive to minimize the error we are looking for a global minimum. By computing the gradient, which points in the direction of steepest ascent, of the error function with respect to the weight and subtracting it from the current weight value we will get closer to a minimum of the error function. When backpropagating the updating of the weighst is done by
 
+![Back propagation](https://github.com/alintulu/NeuralNetwork/blob/master/documentation/images/backpropagation.png)
+
 where eta is a fixed parameter denoted as the learning rate. It adjusts the rate of learning and should be chosen suffficiently small to guarantee enough time to find a good local minimum.
 
 Backpropagation is necessery since the error can't be computed until we reach the last output node. There the error is computed as the difference of the predicted and actual true value of the output. And propagated backwards to update the weights and errors of the rest of the network.
